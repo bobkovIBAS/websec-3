@@ -3,13 +3,14 @@ package com.RosGramm.server.controllers;
 
 import com.RosGramm.server.DAO.SubscriberDAO;
 import com.RosGramm.server.model.Subscriber;
-import com.RosGramm.server.repository.SubscriberRepository;
+import com.RosGramm.server.service.SubscriberService;
 import com.RosGramm.server.user.User;
 import com.RosGramm.server.user.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,19 +19,26 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200")
 public class SubscriberController {
 
+    private final SubscriberService subscriberService;
     private final UserRepository repository;
-    private final SubscriberRepository subscriberRepository;
 
-    public SubscriberController(UserRepository repository, SubscriberRepository subscriberRepository) {
+
+    public SubscriberController(SubscriberService subscriberService, UserRepository repository) {
+        this.subscriberService = subscriberService;
         this.repository = repository;
-        this.subscriberRepository = subscriberRepository;
+
     }
 
     @PostMapping("/add-subscriber")
     @ResponseBody
-    private ResponseEntity<List<String>> addSubscriber(@RequestPart(value = "email") String email) {
-
-
+    private ResponseEntity<List<String>> addSubscriber(@RequestPart(value = "email") String emailUser,
+                                                       @RequestPart(value = "emailSubscriber") String emailSubscriber )
+            throws IOException {
+        var user = repository.findByEmail(emailUser)
+                .orElseThrow();
+        var subscriber = repository.findByEmail(emailSubscriber)
+                .orElseThrow();
+        subscriberService.add(user.getId(),subscriber.getId());
         return new ResponseEntity<>( HttpStatus.OK);
     }
 
@@ -44,7 +52,6 @@ public class SubscriberController {
         for (User finded:user) {
             daoList.add(new SubscriberDAO(finded.getFirstname(),finded.getLastname(),finded.getEmail()));
         }
-
         return new ResponseEntity<>(daoList,HttpStatus.OK);
     }
 }

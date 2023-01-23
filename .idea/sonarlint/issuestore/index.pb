@@ -7,8 +7,6 @@ o
 ?src/main/java/com/RosGramm/server/config/ApplicationConfig.java,2\c\2c166567acc3e1d85d2f17b1dc99ff177079965a
 q
 Asrc/main/java/com/RosGramm/server/auth/AuthenticationRequest.java,0\c\0c6d48ac3d8fa6dfa0df436a95287b63f670468e
-k
-;src/main/java/com/RosGramm/server/auth/RegisterRequest.java,c\b\cbcc2f0dc12071bfde516a357a8219108358c9b4
 t
 Dsrc/main/java/com/RosGramm/server/auth/AuthenticationController.java,3\c\3c391b2fd3317ed7c35e0c0e0a6c4b6c14835b76
 r
@@ -19,13 +17,5 @@ Asrc/main/java/com/RosGramm/server/auth/AuthenticationService.java,4\0\4044d002
 0src/main/java/com/RosGramm/server/user/User.java,c\a\ca04557508460b3e773f7af74b014ab1e4e77cbb
 u
 Esrc/main/java/com/RosGramm/server/config/JwtAuthenticationFilter.java,9\e\9ee23a22473a108a7fe92b57794de88ec0aecf43
-l
-<src/main/java/com/RosGramm/server/service/AvatarService.java,a\e\aeeba0610bca32085ac4921593bf1cf9611ccd9a
-p
-@src/main/java/com/RosGramm/server/service/AvatarServiceImpl.java,0\f\0f26d4e470b2d29b71b69ec4ba0bc7b7a5aca201
 h
 8src/main/java/com/RosGramm/server/ServerApplication.java,2\6\26062a81801d03cca5e591e7f87c0daf3930a79f
-c
-3src/main/java/com/RosGramm/server/model/Avatar.java,e\3\e36150b58f94748f4df7b8f0f9e411a96aa0e8a2
-r
-Bsrc/main/java/com/RosGramm/server/repository/AvatarRepository.java,2\6\26aa90539430b12c2c1ea92cb4d3860c084c222e

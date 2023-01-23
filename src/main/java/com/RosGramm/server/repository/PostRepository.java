@@ -13,5 +13,7 @@ public interface PostRepository extends MongoRepository<Post, String > {
     Post insert(Post post);
     @Query("{ 'idUser' : ?0 }")
     List<Post> findByIdUser (String idUser);
+    @Query("{ 'label' : ?0 }")
+    Post findByLabel(String label);
 
 }

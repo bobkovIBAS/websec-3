@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/avatar/**").permitAll()
                 .requestMatchers("/post/**").permitAll()
                 .requestMatchers("/subscriber/**").permitAll()
+                .requestMatchers("/like/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

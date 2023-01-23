@@ -14,28 +14,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Document(collection = "_post")
-public class Post {
+@Document(collection = "_like")
+public class Like {
 
     @BsonProperty("_id")
     @BsonId
     @BsonRepresentation(BsonType.OBJECT_ID)
     private String id;
-    private String encodedPhoto;
-    private String label;
-    private String idUser;
+    private String idPost;
     private Integer counterLike;
 
-    public Post(String encodedPhoto, String label, String idUser, Integer counterLike) {
-        this.encodedPhoto = encodedPhoto;
-        this.label = label;
-        this.idUser = idUser;
+    public Like(String idPost, Integer counterLike) {
+        this.idPost = idPost;
         this.counterLike = counterLike;
-    }
-
-    public Post(String encodedPhoto, String label, String idUser) {
-        this.encodedPhoto = encodedPhoto;
-        this.idUser = idUser;
-        this.label = label;
     }
 }

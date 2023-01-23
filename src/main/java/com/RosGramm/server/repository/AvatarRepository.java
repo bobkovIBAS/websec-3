@@ -12,4 +12,5 @@ public interface AvatarRepository extends MongoRepository<Avatar, String > {
     Optional<Avatar> findByIdUser (String idUser);
     Avatar deleteAllByIdUser(String idUser);
 
+
 }

@@ -28,7 +28,7 @@ public class PostServiceImpl implements PostService {
     private final String uploadPath = "C:\\Users\\vabob\\IdeaProjects\\ServerForRosGramm\\src\\main\\java\\com\\RosGramm\\server\\photos";
 
     @Override
-    public String add(MultipartFile photo, String label, String idUser) throws IOException {
+    public String add(MultipartFile photo, String label, String idUser, Integer counterLike) throws IOException {
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdirs();
@@ -40,15 +40,14 @@ public class PostServiceImpl implements PostService {
         byte[] fileContent = FileUtils.readFileToByteArray(new File(uploadDir + "/" + fileName));
         String encodedString = Base64.getEncoder().encodeToString(fileContent);
         //base64
-        Post post = new Post(encodedString,label,idUser);
+        Post post = new Post(encodedString,label,idUser,0);
         postRepository.insert(post);
         return null;
     }
 
     @Override
-    public List<Post> findPost(String email) {
-        User user = userRepository.findByEmail(email).get();
-        List<Post> postList = postRepository.findByIdUser(user.getId());
+    public List<Post> findPost(String idUser) {
+        List<Post> postList = postRepository.findByIdUser(idUser);
         return postList;
     }
 
@@ -63,6 +62,11 @@ public class PostServiceImpl implements PostService {
                     post.getLabel()));
         }
         return postDAOList;
+    }
+
+    @Override
+    public Post findPostByLabel(String label) {
+        return postRepository.findByLabel(label);
     }
 
 }
